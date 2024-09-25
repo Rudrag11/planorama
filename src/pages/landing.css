@@ -1,0 +1,76 @@
+.main{
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1%;
+    padding-right: 1%;
+    background-color: rgb(244, 224, 200);
+}
+.header{
+    font-size: larger;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    gap: 90%;
+    margin: 0;
+}
+.header h2{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 2px;
+}
+.landingbody{
+    
+    border-radius: 10px;
+    height: 75%;
+    font-size: 100px;
+    text-align: left;
+    margin: 0;
+    line-height: 20px;
+    font-family: 'landing-font';
+    color:rgba(199, 56, 56, 0.845);
+}
+img{
+    height:500px;
+    width:500px;
+    position: absolute;
+    top:100px;
+    right:100px;
+}
+
+
+.Get-started{
+    font-size: 20px;
+    letter-spacing: 1px;
+    background:none;
+    color:rgba(199, 56, 56, 0.845);
+    border:2px solid rgba(174, 39, 39, 0.949);
+    border-radius: 20px;
+    width:150px;
+    height:60px;
+    margin-right:20px;
+    transition: transform .2s;
+    cursor: pointer;
+}
+
+
+.Login-btn{
+    letter-spacing: 1px;
+    font-size: 20px;
+    background:none;
+    color:rgba(199, 56, 56, 0.845);
+    border:2px solid rgba(174, 39, 39, 0.949);
+    border-radius: 20px;
+    width:100px;
+    height:60px;
+    margin:20px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.Get-started:hover{
+    transform: scale(1.1);
+}
+.Login-btn:hover{
+    transform: scale(1.1);
+}
