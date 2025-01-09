@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Generated Itinerary</title>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-left: 2%;
+            padding-right: 2%;
+            background-color: rgb(244, 224, 200);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-y: auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: rgba(199, 56, 56, 0.845);
+            margin-top: 2%;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: rgba(174, 39, 39, 0.949);
+            margin-bottom: 1em;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 3% auto;
+            width: 80%;
+            font-size: 1.2em;
+        }
+
+        div {
+            margin-bottom: 1em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            color: rgba(174, 39, 39, 0.949);
+        }
+
+        p {
+            font-size: 1.1em;
+            margin: 0.5em 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 1em 0;
+            border-radius: 8px;
+        }
+
+        button {
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            background-color: rgba(199, 56, 56, 0.845);
+            color: white;
+            border: 2px solid rgba(174, 39, 39, 0.949);
+            border-radius: 20px;
+            padding: 0.5em 2em;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: block;
+            margin: 2em auto;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        a {
+            text-align: center;
+            display: block;
+            margin-top: 1em;
+            font-size: 1.1em;
+            color: rgba(174, 39, 39, 0.949);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(174, 39, 39, 0.949);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .logout-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/"><button class="logout-button">Logout</button></a>
+
+    <h1>Generated Itinerary for {{ username }}</h1>
+
+    <form action="/whereto" method="POST">
+        <h2>Itinerary Details</h2>
+        {% for day, plan in itinerary.items() %}
+        <div>
+            <h3>{{ day }}</h3>
+            <p><strong>Hotel:</strong> {{ plan['Hotel']['Name'] }}</p>
+            {% if plan['Hotel']['Photo_Reference'] %}
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference={{ plan['Hotel']['Photo_Reference'] }}&key=AIzaSyCVvS3wpd8Lm1tm7NyTsIBMF-DWqTZIWN8" alt="Hotel Image">
+            {% endif %}
+
+            <p><strong>Lunch:</strong> {{ plan['Lunch Restaurant']['Name'] }}</p>
+            <p><strong>Travel Time from Hotel:</strong> {{ plan['Lunch Restaurant']['Travel_Time'] }}</p>
+            {% if plan['Lunch Restaurant']['Photo_Reference'] %}
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference={{ plan['Lunch Restaurant']['Photo_Reference'] }}&key=AIzaSyCVvS3wpd8Lm1tm7NyTsIBMF-DWqTZIWN8" alt="Lunch Restaurant Image">
+            {% endif %}
+
+            <p><strong>Dinner:</strong> {{ plan['Dinner Restaurant']['Name'] }}</p>
+            <p><strong>Travel Time from Hotel:</strong> {{ plan['Dinner Restaurant']['Travel_Time'] }}</p>
+            {% if plan['Dinner Restaurant']['Photo_Reference'] %}
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference={{ plan['Dinner Restaurant']['Photo_Reference'] }}&key=AIzaSyCVvS3wpd8Lm1tm7NyTsIBMF-DWqTZIWN8" alt="Dinner Restaurant Image">
+            {% endif %}
+
+            <h3>Attractions</h3>
+            {% for attraction in plan['Attractions'] %}
+                <p><strong>Name:</strong> {{ attraction['Name'] }}</p>
+                <p><strong>Travel Time from Hotel:</strong> {{ attraction['Travel_Time'] }}</p>
+                {% if attraction['Photo_Reference'] %}
+                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference={{ attraction['Photo_Reference'] }}&key=AIzaSyCVvS3wpd8Lm1tm7NyTsIBMF-DWqTZIWN8" alt="Attraction Image">
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+        <a href="/whereto"><button type="button">Create a New Itinerary</button></a>
+
+    </form>
+
+</body>
+</html>

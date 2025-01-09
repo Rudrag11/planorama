@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where To Page</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: rgb(244, 224, 200);
+      padding: 2%;
+    }
+
+    .title, .info-title {
+      font-size: 35px;
+      line-height: 1.75rem;
+      font-weight: 600;
+      text-align: center;
+      color: rgba(199, 56, 56, 0.845); 
+      margin-top: 20px;
+      margin-bottom: 30px;
+      transition: opacity 0.5s ease;
+    }
+
+    .form {
+      background-color: #fff;
+      padding: 2rem;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .label {
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      color: #6B7280;
+      font-weight: 500;
+      align-self: flex-start;
+    }
+
+    .input-destination,
+    .input-number, 
+    .input-budget, 
+    .input-date {
+      width: 100%;
+      padding: 1rem;
+      margin: 8px 0;
+      font-size: 0.875rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      outline: none;
+      background-color: #fff;
+    }
+
+    .date-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 1.5rem;
+      background-color: rgba(199, 56, 56, 0.845);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 0.5rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: rgba(184, 31, 31, 0.86);
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="where-to-page">
+    <h2 class="title">Where do you want to go?</h2>
+
+    <form class="form" action="/details" method="post" id="destination-form">
+      <input
+        type="text"
+        class="input-destination"
+        placeholder="Enter destination"
+        name="dest"
+      />
+      <button class="submit-button" type="submit">Next</button>
+    </form>
+
+    
+  </div>
+
+</body>
+</html>
